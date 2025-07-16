@@ -1,21 +1,23 @@
-Feature: Login na plataforma
+#language:pt
+
+Funcionalidade: Login na plataforma
     Como cliente da EBAC-SHOP
     Quero fazer o login (autenticação) na plataforma
     Para visualizar meus pedidos
 
-    Background: Login
-        Given que eu acesse a página de autenticação
+    Contexto: Login
+        Dado que eu acesse a página de autenticação
 
-    Scenario: Autenticação válida
-        When eu inserir o usuário "success_login@teste.com.br"
-        And a senha "Success01"
-        Then deve ser direcionado para a tela de checkout
+    Cenário: Autenticação válida
+        Quando eu inserir o usuário "success_login@teste.com.br"
+        E a senha "Success01"
+        Então deve ser direcionado para a tela de checkout
 
-    Scenario Outline: Validar autenticação inválida
-        When eu inserir <usuario> e <senha>
-        Then deve exibir <mensagem>
+    Esquema do Cenário: Validar autenticação inválida
+        Quando eu inserir <usuario> e <senha>
+        Então deve exibir <mensagem>
 
-        Examples:
+        Exemplos:
             | usuario                      | senha       | mensagem                     |
             | "login_fail@teste.com.br"    | "FAIL_00"   | “Usuário ou senha inválidos” |
             | "success_login@teste.com.br" | "FAIL_00"   | “Usuário ou senha inválidos” |
